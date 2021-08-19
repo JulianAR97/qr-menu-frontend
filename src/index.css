@@ -1,4 +1,6 @@
-
+:root {
+  --gold: #FFB703
+}
 /* Desktops and laptops ----------- */
 @media only screen 
 and (min-width : 481px) {
@@ -95,7 +97,7 @@ and (min-width : 481px) {
   .text-title {
     font-size: 36px;
     padding-top: 3%;
-    color: #FFB703;
+    color: var(--gold);
     padding-left: 5%;
     padding-right: 5%;
     font-weight: bold;
@@ -442,7 +444,7 @@ and (max-device-width : 815px) {
     color: white;
     font-size: 36px;
     padding-top: 3%;
-    color: #FFB703;
+    color: var(--gold);
     padding-left: 3%;
     padding-right: 3%;
     font-weight: bold;
@@ -670,3 +672,16 @@ and (max-device-width : 815px) {
   }
 
 }
+
+#content {
+  color: #fff;
+  font-weight: 600;
+  padding: 30px;
+  text-align: left;
+}
+
+#content strong {
+  color: var(--gold);
+  font-weight: 700;
+}
+
