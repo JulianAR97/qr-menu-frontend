@@ -4,105 +4,23 @@
 /* Desktops and laptops ----------- */
 @media only screen 
 and (min-width : 481px) {
-  * {
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-  }
-  
-  body {
-    margin: 0;
-    padding: 0px;
-    font-family: "Optima";
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    overflow:scroll;
-    height: auto;
-    background-color: #045de9;
-    background-image: linear-gradient(to right bottom, #045de9 25%, #09c6f9 74%);
-    /* fallback for old browsers */
-    /* background: -webkit-linear-gradient(to right, #28282B, #232526);  /* Chrome 10-25, Safari 5.1-6 */
-    /* background: linear-gradient(to right, #28282B, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    
-  }
 
-  .error-page {
-    text-align: center;
-  }
   
-  .error-page-text {
-    color: white;
-    font-size: 36px;
-    margin-top: 20%;
-  }
-  
-  .home-link {
-    color: white;
-  }
-
   .centered {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
     width: 50%;
   }
 
-  .welcome-text {
-    font-size: 34px;
-    color:white;
-    padding-left: 5%;
-    padding-right: 5%;
-    text-shadow: 2px 2px black;
-  }
-
   .form {
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    background: white;
-    padding: 20px;
-    margin-top: 30px;
-    width: 40%;
     max-width: 700px;
     min-width: 400px;
+    width: 40%;
   }
 
-  .form-signup {
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    background: white;
-    padding: 20px;
-    margin-top: 30px;
-    min-width: 30rem;
-  }  
-
   .dashboard {
-    text-align: center;
-    justify-content: center;
     margin-top: 5%;
   }
 
-  .text {
-    color: white;
-    font-size: 20px;
-    padding-left: 5%;
-    padding-right: 5%;
-    font-weight: 600;
-    text-shadow: 1px 1px black;
-  }
 
-  .text-title {
-    font-size: 36px;
-    padding-top: 3%;
-    color: var(--gold);
-    padding-left: 5%;
-    padding-right: 5%;
-    font-weight: bold;
-    text-shadow: 2px 2px black;
-  }
 
   .qrcode {
     height: 400px;
@@ -118,15 +36,7 @@ and (min-width : 481px) {
     max-width: none !important;
   }
 
-  footer {
-    padding-top: 1%;
-    padding-bottom: 1%;
-    margin-top: 5%;
-    background: #09c6f9;
-    -webkit-box-shadow: 10px 0px 10px #303f9f;
-    -moz-box-shadow: 10px 0px 10px #303f9f;
-    box-shadow: 10px 0px 10px #303f9f;
-  }
+
 
   .menu {
     display: flex;
@@ -279,12 +189,6 @@ and (min-width : 481px) {
     border: 3px solid black;
   }
 
-  .home-page {
-    text-align: center;
-    justify-content: center;
-    padding-top: 5%;
-  }
-
   .MuiTab-wrapper {
     font-family: "Optima";
   }
@@ -330,13 +234,6 @@ and (min-width : 481px) {
 @media only screen 
 and (min-width : 280px)
 and (max-device-width : 815px) {
-  * {
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    
-  }
-
   html {
     scroll-behavior: smooth;
     cursor: grab;
@@ -345,76 +242,16 @@ and (max-device-width : 815px) {
     /* height: 1rem !important; */
   }
   
-  body {
-    margin: 0;
-    padding: 0px;
-    font-family: "Optima";
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    overflow:scroll;
-    height: auto;
-    background-color: #045de9;
-    background-image: linear-gradient(315deg, #045de9 25%, #09c6f9 74%);
-    /* background: -webkit-linear-gradient(to right, #414345, #232526);  /* Chrome 10-25, Safari 5.1-6 */
-    /* background: linear-gradient(to right, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    
-  }
-
-  .error-page {
-    text-align: center;
-  }
-  
-  .error-page-text {
-    color: white;
-    font-size: 36px;
-    margin-top: 20%;
-  }
-  
-  .home-link {
-    color: white;
-  }
-
-
   .MuiInput-underline:after {
     border-bottom: 2px solid #e5f65f !important;
   }
 
   .centered {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
     width: 90%;
-  }
-
-  .welcome-text {
-    font-size: 34px;
-    color:white;
-    padding-left: 5%;
-    padding-right: 5%;
-    text-shadow: 1px 1px black;
   }
 
   .form {
     max-width: 500px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    background: white;
-    padding: 20px;
-    margin-top: 30px;
-  }
-
-
-  .form-signup {
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    background: white;
-    padding: 20px;
-    margin-top: 30px;
-    min-width: 30rem;
   }
 
   .MuiDialogActions-root {
@@ -427,29 +264,10 @@ and (max-device-width : 815px) {
 
 
   .dashboard {
-    text-align: center;
-    justify-content: center;
     margin-top: 15%;
   }
 
-  .text {
-    color: white;
-    font-size: 24px;
-    padding-left: 5%;
-    padding-right: 5%;
-    text-shadow: 1px 1px black;
-  }
 
-  .text-title {
-    color: white;
-    font-size: 36px;
-    padding-top: 3%;
-    color: var(--gold);
-    padding-left: 3%;
-    padding-right: 3%;
-    font-weight: bold;
-    text-shadow: 2px 2px black;
-  }
 
   .qrcode {
     height: 400px;
@@ -463,16 +281,6 @@ and (max-device-width : 815px) {
 
   .makeStyles-root-2 {
     max-width: none !important;
-  }
-
-  footer {
-    padding-top: 1%;
-    padding-bottom: 1%;
-    margin-top: 5%;
-    background: #09c5f9d5;
-    -webkit-box-shadow: 10px 0px 10px black;
-    -moz-box-shadow: 10px 0px 10px black;
-    box-shadow: 10px 0px 10px black;
   }
 
   .hidden {
@@ -569,10 +377,6 @@ and (max-device-width : 815px) {
     justify-content: space-around;
   }
 
-  /* .MuiAppBar-colorPrimary {
-    background-color: #023047 !important;
-  } */
-
   .MuiTab-textColorPrimary {
     color: white !important;
   }
@@ -615,16 +419,6 @@ and (max-device-width : 815px) {
 
   .render-iframe-menu {
     height:25rem;
-  }
-
-  .home-page {
-    text-align: center;
-    justify-content: center;
-    padding-top: 5%;
-  }
-
-  .form {
-    width: 95%;
   }
 
   .MuiTab-wrapper {
@@ -673,15 +467,150 @@ and (max-device-width : 815px) {
 
 }
 
-#content {
+.content {
   color: #fff;
   font-weight: 600;
-  padding: 30px;
-  text-align: left;
+  padding: 60px;
 }
 
-#content strong {
+.content strong {
   color: var(--gold);
   font-weight: 700;
 }
 
+.content > h2 {
+  color: var(--gold);
+  font-weight: 700;
+  margin-top: calc(39px + 15 * ((100vw - 360px)/ 1240));
+  margin-bottom: calc(13px + 5 * ((100vw - 360px)/ 1240));
+}
+
+.content > ul {
+  margin-top: calc(16px + 6 * ((100vw - 360px)/ 1240));
+  margin-bottom: calc(26px + 10 * ((100vw - 360px)/ 1240));
+  list-style: none;
+  padding-left: 0px;
+}
+
+.content > h5 {
+  margin-top: calc(16px + 6 * ((100vw - 360px)/ 1240));
+  margin-bottom: calc(26px + 10 * ((100vw - 360px)/ 1240));
+}
+
+.h-center {
+  text-align: center;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
+
+.top {
+  background-color: lightgray;
+}
+
+.mid {
+  background-color: darkgray;
+}
+
+.bottom {
+  background-color: lightcoral
+}
+
+.align-left {
+  text-align: left;
+}
+
+.home-page {
+  text-align: center;
+  justify-content: center;
+}
+
+body {
+  margin: 0;
+  padding: 0px;
+  font-family: "Optima";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: scroll;
+  overscroll-behavior-y: none;
+  height: auto;
+  background-color: #045de9;
+}
+
+.error-page {
+  text-align: center;
+}
+
+.error-page-text {
+  color: white;
+  font-size: 36px;
+  margin-top: 20%;
+}
+
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.home-link {
+  color: white;
+}
+
+.welcome-text {
+  font-size: 34px;
+  color:white;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.form-signup {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  padding: 20px;
+  margin-top: 30px;
+  min-width: 30rem;
+}
+
+.text {
+  color: white;
+  font-size: 24px;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.dashboard {
+  text-align: center;
+  justify-content: center;
+}
+
+.form {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  margin: 30px auto 0 auto;
+  padding: 20px;
+}
+
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+footer {
+  padding-top: 1%;
+  padding-bottom: 1%;
+  background: #09c5f9d5;
+}
+
+.text-title {
+  color: var(--gold);
+  font-weight: 700;
+}
