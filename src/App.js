@@ -4,7 +4,6 @@ import ErrorPage from './components/ErrorPage';
 import Dashboard from './components/Dashboard';
 import Home from "./components/Home";
 import Contact from "./components/Contact";
-import About from "./components/About";
 import Navbar from "./components/Navbar";
 import { connect} from 'react-redux';
 import React, { useEffect } from 'react';
@@ -46,7 +45,7 @@ function App(props) {
         <Route path={'/'} exact component={Home} />
         <Route path={'/dashboard'} exact component={Dashboard} />
         <Route path={'/contact'} exact component={Contact} />
-        <Route path={'/about'} exact component={About} />
+
         <Route path={'/demo'} exact component={Demo} />
         <Route path={'/single-file'} exact component={SingleFileComponent} />
         <Route path={'/qr-menu'} exact component={MenuComponent} />
