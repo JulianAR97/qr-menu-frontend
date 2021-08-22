@@ -3,9 +3,6 @@ import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
 
   const Contact = (props) => {
-
-  let email = 'me@aokarkau.com';
-
   const lang = props.menus.lang
   const text = {
     en: {
@@ -26,20 +23,20 @@ import Button from '@material-ui/core/Button';
 
   const [subject, setSubject] = React.useState({subject: ''});
   const [body, setBody] = React.useState({body: ''});
-  let link = `mailto:${email}?subject=${subject.subject}&body=${body.body}`;
+  let link = `mailto:${process.env.EMAIL}?subject=${subject.subject}&body=${body.body}`;
 
   const handleSubjectInput = (e) => {
     setSubject({
       [e.target.name]: e.target.value
     })
-    link = `mailto:${email}?subject=${subject.subject}&body=${body.body}`;
+    link = `mailto:${process.env.EMAIL}?subject=${subject.subject}&body=${body.body}`;
   }
 
   const handleBodyInput = (e) => {
     setBody({
       [e.target.name]: e.target.value
     })
-    link = `mailto:${email}?subject=${subject.subject}&body=${body.body}`;
+    link = `mailto:${process.env.EMAIL}?subject=${subject.subject}&body=${body.body}`;
   }
 
     return (
