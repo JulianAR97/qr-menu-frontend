@@ -4,13 +4,11 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import HomeIcon from '@material-ui/icons/Home';
-import InfoIcon from '@material-ui/icons/Info';
 import PersonPinIcon from '@material-ui/icons/PersonPin';
-import ContactMailIcon from '@material-ui/icons/ContactMail';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { withRouter } from "react-router";
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { logOut } from '../actions/user';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
@@ -40,7 +38,7 @@ const BootstrapInput = withStyles((theme) => ({
   input: {
     borderRadius: 4,
     position: 'relative',
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: '#FFF',
     border: '1px solid #ced4da',
     fontSize: 16,
     padding: '10px 26px 10px 12px',
@@ -73,16 +71,12 @@ function Navbar(props) {
   const text = {
     en: {
       home: "Home",
-      about: 'About',
-      demo: "Demo",
-      contact: "Contact",
+      login: "Login",
       logout: "Logout"
     },
     ru: {
       home: "Домой",
-      about: 'Инфо',
-      demo: "Демо",
-      contact: "Контакт",
+      login: "Авторизоваться",
       logout: "Выйти"
     }
   }
@@ -102,24 +96,39 @@ function Navbar(props) {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" >
+      <AppBar position="static" style={{backgroundColor: '#91677D'}}>
         <Tabs 
           variant="scrollable"
           scrollButtons="on"
           indicatorColor="primary"
           textColor="primary"
         >
-          <Tab label={text[lang].home} value='/' icon={<HomeIcon />} component={Link} to={props.menus.logged_in ? '/dashboard' : '/'} />
-          <Tab label={text[lang].about} icon={<InfoIcon />} component={Link} to={'/about'}  />
+          <Tab 
+            label={text[lang].home} 
+            value='/' 
+            icon={<HomeIcon />} 
+            component={Link} 
+            to={props.menus.logged_in ? '/dashboard' : '/'} 
+          />
+          
           {props.menus.logged_in ?
             null
             :
-            <Tab label={text[lang].demo} icon={<PersonPinIcon />} component={Link} to={'/demo'} />
+            <Tab 
+              label={text[lang].login} 
+              icon={<PersonPinIcon />} 
+              component={Link} 
+              to={'/login'} 
+            />
           }
-          <Tab label={text[lang].contact} icon={<ContactMailIcon />} component={Link} to={'/contact'} />
+          
           {
             props.menus.logged_in ?
-            <Tab label={text[lang].logout} icon={<ExitToAppIcon />} onClick={handleLogOut} />
+            <Tab 
+              label={text[lang].logout} 
+              icon={<ExitToAppIcon />} 
+              onClick={handleLogOut} 
+            />
             :
             null
           } 
