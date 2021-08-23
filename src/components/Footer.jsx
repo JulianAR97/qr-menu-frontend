@@ -19,7 +19,7 @@ const Footer = (props) => {
   return (
     <footer className='footer text-lg-start fixed'>
       <div className="text-white text-center" >
-        <p style={{color: 'white', textShadow: '1px 1px black', fontSize: '18px'}}>© {new Date().getFullYear()} <a target="_blank" href="https://aokarkau.com" style={{color: 'white', }}>{text[lang].name}</a>. {text[lang].licenseMIT}({Package.version})</p>
+        <p style={{color: 'white', fontSize: '18px', margin: '0'}}>© {new Date().getFullYear()} <a target="_blank" href="https://aokarkau.com" style={{color: 'white', }}>{text[lang].name}</a>. {text[lang].licenseMIT}({Package.version})</p>
       </div>
     </footer>
   );

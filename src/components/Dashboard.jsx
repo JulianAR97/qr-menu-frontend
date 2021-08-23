@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import SubNavbar from './SubNavbar';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Button from '@material-ui/core/Button';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import SMTable from './SMTable';
 import LinksTable from './LinksTable';
 

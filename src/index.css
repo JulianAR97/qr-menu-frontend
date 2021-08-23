@@ -1,5 +1,9 @@
 :root {
-  --gold: #FFB703
+  --gold: #FFB703;
+  --color1: #CBD9E8; /* rgb(203, 217, 232) */
+  --color2: #95A5C3; /* rgb(149, 165, 195) */
+  --color3: #91677D; /* rgb(145, 103, 125) */
+  --color4: #FFD9B5; /* rgb(255, 217, 181) */
 }
 /* Desktops and laptops ----------- */
 @media only screen 
@@ -82,15 +86,6 @@ and (min-width : 481px) {
     animation: spin .8s linear infinite;
   }
 
-  #contact {
-    padding-top: 7%;
-    padding-bottom: 10%;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
   .input {
     border: 0;
     box-sizing: border-box;
@@ -139,10 +134,6 @@ and (min-width : 481px) {
     flex-direction:row;
     justify-content: space-around;
   }
-
-  /* .MuiAppBar-colorPrimary {
-    background-color: #023047 !important;
-  } */
 
   .MuiTab-textColorPrimary {
     color: white !important;
@@ -321,14 +312,6 @@ and (max-device-width : 815px) {
     animation: spin .8s linear infinite;
   }
 
-  #contact {
-    padding-top: 7%;
-    padding-bottom: 10%;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
 
   .input {
     border: 0;
@@ -474,12 +457,12 @@ and (max-device-width : 815px) {
 }
 
 .content strong {
-  color: var(--gold);
+  color: var(--color4);
   font-weight: 700;
 }
 
 .content > h2 {
-  color: var(--gold);
+  color: var(--color4);
   font-weight: 700;
   margin-top: calc(39px + 15 * ((100vw - 360px)/ 1240));
   margin-bottom: calc(13px + 5 * ((100vw - 360px)/ 1240));
@@ -507,15 +490,15 @@ and (max-device-width : 815px) {
 }
 
 .top {
-  background-color: lightgray;
+  background-color: var(--color1);
 }
 
 .mid {
-  background-color: darkgray;
+  background-color: var(--color2);
 }
 
 .bottom {
-  background-color: lightcoral
+  background-color: var(--color3);
 }
 
 .align-left {
@@ -536,7 +519,7 @@ body {
   overflow: scroll;
   overscroll-behavior-y: none;
   height: auto;
-  background-color: #045de9;
+  background-color: #FFF;
 }
 
 .error-page {
@@ -591,7 +574,7 @@ body {
 }
 
 .form {
-  background: white;
+  background: #FFF;
   display: flex;
   flex-direction: column;
   margin: 30px auto 0 auto;
@@ -607,10 +590,55 @@ body {
 footer {
   padding-top: 1%;
   padding-bottom: 1%;
-  background: #09c5f9d5;
+  background: var(--color3);
+  opacity: 0.9;
 }
 
 .text-title {
-  color: var(--gold);
+  color: var(--color4);
   font-weight: 700;
+}
+
+.move-ul {
+  transform: translateX(25px) translateY(42px);
+}
+
+#contact > input {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #FFF;
+  font-weight: 700;
+  font-family: 'Optima';
+  margin-top: 20px;
+}
+
+#contact > textarea {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #FFF;
+  font-weight: 700;
+  font-family: 'Optima';
+  margin-bottom: 15px;
+}
+
+#contact > textarea::placeholder {
+  color: #FFF;
+  opacity: 50%
+}
+
+#contact > input::placeholder {
+  color: #FFF;
+  opacity: 50%;
+}
+
+#contact-button {
+  background-color: var(--color4);
+  color: var(--color3);
+}
+
+#contact {
+  padding-top: 5%;
+  padding-bottom: 5%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
