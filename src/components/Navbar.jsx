@@ -88,52 +88,44 @@ const Navbar = (props) => {
 
   return (
     <div className={`${classes.root} custom-ab`}>
-      <AppBar position="static" style={{backgroundColor: '#91677D'}}>
-        <Tabs 
-          variant="scrollable"
-          scrollButtons="on"
-          indicatorColor="primary"
-          textColor="primary"
-          value={false}
-        >
-          <Tab
-            className={'icon'}
-            icon={<HomeIcon />} 
-            component={Link} 
-            to={'/'} 
-          />
-            
-          
-          {
-            props.menus.logged_in ?
-            <Tab 
-              className={'icon'}
-              icon={<ExitToAppIcon />} 
-              onClick={handleLogOut} 
-            />
-            :
-            <Tab
-              className={'icon'}
-              icon={<PersonPinIcon />} 
-              component={Link}
-              to={'/login'}
-            />
-          } 
 
-          <FormControl className={classes.margin}>
-            <Select
-              labelId="demo-customized-select-label"
-              id="demo-customized-select"
-              value={props.menus.lang}
-              input={<BootstrapInput />}
-              onChange={handleLangChange}
-            >
-              <MenuItem value="en"><Flag code="usa" height="16" /></MenuItem>
-              <MenuItem value="ru"><Flag code="ru" height="16" /></MenuItem>
-            </Select>
-          </FormControl>
-        </Tabs>
-      </AppBar>
+      <Tab
+        className={'icon tab'}
+        icon={<HomeIcon />} 
+        component={Link} 
+        to={'/'} 
+      />
+        
+      
+      {
+        props.menus.logged_in ?
+        <Tab 
+          className={'icon tab'}
+          icon={<ExitToAppIcon />} 
+          onClick={handleLogOut} 
+        />
+        :
+        <Tab
+          className={'icon tab'}
+          icon={<PersonPinIcon />} 
+          component={Link}
+          to={'/login'}
+        />
+      } 
+
+      <FormControl className={classes.margin} style={{padding: '8px 15px'}}>
+        <Select
+          labelId="demo-customized-select-label"
+          id="demo-customized-select"
+          value={props.menus.lang}
+          input={<BootstrapInput />}
+          onChange={handleLangChange}
+        >
+          <MenuItem value="en"><Flag code="usa" height="16" /></MenuItem>
+          <MenuItem value="ru"><Flag code="ru" height="16" /></MenuItem>
+        </Select>
+      </FormControl>
+     
     </div>
   );
 }

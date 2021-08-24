@@ -6,6 +6,8 @@ import Tab from '@material-ui/core/Tab';
 import { withRouter } from "react-router";
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
+import HomeIcon from '@material-ui/icons/Home';
+import Navbar from './Navbar'
 import './SubNavbar.css'
 
 
@@ -69,8 +71,11 @@ const SubNavbar = (props) => {
           variant="fullWidth"
           value={false}
         >
-          {renderTabs()}
-          
+          {props.menus.logged_in ? renderTabs() : null}
+      
+            <Navbar />
+
+   
         </Tabs>
       </Paper>
     </>

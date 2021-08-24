@@ -3,7 +3,7 @@ a.tab:hover {
 }
 
 a.tab {
-  background-color: #95A5C3 !important;
+  background-color: var(--color3) !important;
   opacity: 0.8;
 }
 
@@ -11,9 +11,40 @@ a.tab.active {
   opacity: 1;
 }
 
+button.tab {
+  background-color: var(--color3) !important;
+  opacity: 0.8;
+}
+
+button.tab:hover {
+  opacity: 1;
+}
+
 /* Stack column if width of screen is less than 600px */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 900px) {
   .custom-nav .MuiTabs-flexContainer {
     flex-direction: column !important;
   }
+
+  .custom-ab {
+    width: 100% !important;
+    text-align: right;
+    order: -1;
+  }
+}
+
+.icon.tab {
+  color: #FFF !important;
+}
+
+@media only screen and (min-width: 900px) {
+  .custom-ab {
+    width: auto
+
+  }
+}
+
+.custom-ab {
+  background-color: var(--color3);
+  opacity: 0.8 !important;
 }
