@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import RenderMenu from "./components/RenderMenu";
 import ErrorPage from './components/ErrorPage';
 import Dashboard from './components/Dashboard';
@@ -8,11 +8,12 @@ import Navbar from "./components/Navbar";
 import { connect} from 'react-redux';
 import React, { useEffect } from 'react';
 import axios from 'axios';
-import Demo from "./components/Demo";
+import Login from './components/Login';
 import Footer from "./components/Footer";
 import SingleFileComponent from "./components/SingleFileComponent";
 import MenuComponent from "./components/MenuComponent";
 import Qrlinks from "./components/Qrlinks";
+import SubNavbar from "./components/SubNavbar";
 
 
 
@@ -38,15 +39,17 @@ function App(props) {
     checkLoginStatus(props)
   }, []);
 
+  
   return (
     <Router>
       <Navbar />
+      {props.menus.logged_in ? <SubNavbar /> : null}
       <Switch>
         <Route path={'/'} exact component={Home} />
         <Route path={'/dashboard'} exact component={Dashboard} />
         <Route path={'/contact'} exact component={Contact} />
 
-        <Route path={'/demo'} exact component={Demo} />
+        <Route path={'/login'} exact component={Login} />
         <Route path={'/single-file'} exact component={SingleFileComponent} />
         <Route path={'/qr-menu'} exact component={MenuComponent} />
         <Route path={'/qr-link'} exact component={Qrlinks} />

@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { withRouter } from "react-router";
 import { connect } from 'react-redux';
-import SubNavbar from './SubNavbar';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Button from '@material-ui/core/Button';
 import { Link } from "react-router-dom";
@@ -48,7 +47,6 @@ function Dashboard(props) {
     {
       props.menus.isDataLoaded ?
       <>
-      <SubNavbar />
       <div className='dashboard'>
         <div style={{display: 'flex', direction: 'column', justifyContent: 'space-evenly', flexWrap: 'wrap', paddingBottom: '2rem', width:'100%'}}>
           <div className="mobile-table">
@@ -95,8 +93,7 @@ function Dashboard(props) {
             <a href={props.menus.menuQRLink} target="_blank"><img src={props.menus.menuQRLink} style={{width:'300px', height:'300px'}}/></a>
             :
             <>
-              <img src='https://www.qrcodepress.com/wp-content/uploads/2014/09/QR-code-detective-when-not-to-use.jpg' style={{width:'200px', height:'200px', borderRadius: '50%'}}/>
-              <br /> <br />
+              
               <p className="text">{text[lang].noQr}</p>
             </>
           }

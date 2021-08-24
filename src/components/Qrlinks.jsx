@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import SubNavbar from './SubNavbar';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import Button from '@material-ui/core/Button';
@@ -103,7 +102,6 @@ const Qrlinks = (props) => {
       {
         props.menus.isDataLoaded ?
         <>
-          <SubNavbar />
           {
             (props.menus.qrLinks.length === 0) ?
             <p className="text menu-description">

@@ -14,8 +14,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import FileUpload from './FileUpload';
 import CropFreeIcon from '@material-ui/icons/CropFree';
-import SubNavbar from './SubNavbar';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Button from '@material-ui/core/Button';
 
@@ -109,7 +108,6 @@ function SIngleFileComponent(props) {
 
   return (
     <>
-    <SubNavbar />
     {
       !props.menus.lastFile.has_file ?
       <p className="text menu-description">{text[lang].description}<Link to="/qr-menu" style={{color: 'white', textDecoration: 'underline'}}>{text[lang].link1}</Link>.

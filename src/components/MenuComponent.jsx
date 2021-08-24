@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react';
 import { withRouter } from "react-router";
 import { connect } from 'react-redux';
-import SubNavbar from './SubNavbar';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import axios from 'axios';
 import $ from 'jquery';
 import { generateQR } from '../actions/menus';
 import MenuUpload from './MenuUpload';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Button from '@material-ui/core/Button';
 import ViewSDKClient from './ViewSDKClient.js';
 
@@ -92,7 +91,6 @@ const MenuComponent = (props) => {
     {
       props.menus.isDataLoaded ?
         <>
-        <SubNavbar />
        {
          !props.menus.menuFile ?
           <p className="text menu-description"> 
