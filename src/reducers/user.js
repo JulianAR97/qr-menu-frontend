@@ -12,7 +12,7 @@ const defaultState = {
   lang: JSON.parse(localStorage.getItem('lang')) || 'en',
 }
 
-export default (state = defaultState, action) => {
+const UserReducer = (state = defaultState, action) => {
 
   switch(action.type) {
     
@@ -132,3 +132,5 @@ export default (state = defaultState, action) => {
 
   }
 }
+
+export default UserReducer
