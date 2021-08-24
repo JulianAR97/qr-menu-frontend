@@ -22,6 +22,7 @@
     "react-draggable": "^4.4.3",
     "react-google-login": "^5.2.2",
     "react-markdown": "^7.0.0",
+    "react-modal": "^3.14.3",
     "react-redux": "^7.2.3",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
