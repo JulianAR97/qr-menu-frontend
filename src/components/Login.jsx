@@ -36,9 +36,10 @@ const Login = (props) => {
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
+    showload()
     axios.post(`${process.env.REACT_APP_BASE_URL}/login`, login)
-    .then(response => autentication(response))
-    .then(response => $('#loader').hide(0))
+    .then(res => authenticate(res))
+    .then(() => hideLoad())
     .catch(error => alert(error.message))
   }
 
@@ -49,33 +50,31 @@ const Login = (props) => {
     })
   }
 
-  const autentication = (response) => {
+  const authenticate = (response) => {
     if(response.data.errors) {
       setRenderError(true)
     }
     if(response.data.logged_in) {
       props.dispatch(loginUser(response))
       props.history.push('/dashboard')
-      props.handleClose() // close modal
     }
   }
 
-  const loader = () => {
-    $('#loader').show(0)
-  }
+  const showload = () => $('#loader').show(0)
+  const hideLoad = () => $('#loader').hide(0)
 
   const responseGoogle = (response) => {
-    loader()
+    showload()
     axios.post(`${process.env.REACT_APP_BASE_URL}/google_auth`, {email: response.profileObj.email, idpid: response.tokenObj.idpId})
-    .then(response => autentication(response))
-    .then(response => $('#loader').hide(0))
+    .then(res => authenticate(res))
+    .then(() => hideLoad())
     .catch(error => alert(error.message))
   }
 
   return (
     
-    <ReactModal id="login-modal" isOpen={props.isOpen}>
-      <div className="circle" onClick={props.handleClose}>X</div>
+    <ReactModal id="login-modal" isOpen={true}>
+      <div className="circle" onClick={() => props.history.push('/')}>X</div>
       
       {renderError ? <ErrorMessage errors={{email: [text[lang].error]}}/> : null}
       
@@ -101,7 +100,7 @@ const Login = (props) => {
           variant="contained" 
           style={{backgroundColor: '#e3a765'}} 
           type='submit' 
-          onClick={loader}
+          onClick={handleLoginSubmit}
         > 
           {text[lang].loginButton} 
         </ Button >
