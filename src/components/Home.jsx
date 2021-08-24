@@ -12,11 +12,13 @@ const Home = (props) => {
   const [part2, setPart2] = useState('')
   const [scroll, setScroll] = useState({scrollY: 0, opacity: 20, translate: 0})
 
-  const checkLoginStatus = (props) => {
-    if (JSON.parse(localStorage.getItem('token'))) {
+  const checkLoginStatus = () => {
+    if (props.menus.logged_in) {
       props.history.push('/dashboard')
     }
   }
+  
+  checkLoginStatus()
 
   const handleScroll = (e) => {
     let scrollY = window.scrollY
@@ -29,7 +31,7 @@ const Home = (props) => {
   }
 
   useEffect(() => {
-    checkLoginStatus(props)
+
     window.addEventListener('scroll', handleScroll)
   }, [props], window.removeEventListener('scroll', handleScroll));
 

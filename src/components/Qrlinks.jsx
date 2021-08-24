@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import axios from 'axios';
@@ -77,15 +77,11 @@ const Qrlinks = (props) => {
     })
   }
 
-  const checkLoginStatus = (props) => {
-    if (!JSON.parse(localStorage.getItem('token'))) {
-      props.history.push('/')
-    }
+  const checkLoginStatus = () => {
+    if (!props.menus.logged_in) props.history.push('/')
   }
 
-  useEffect(() => {
-    checkLoginStatus(props)
-  });
+  checkLoginStatus()
 
   const handleDelete = (e, row) => {
     if (window.confirm('Are you sure you want to delete?')){

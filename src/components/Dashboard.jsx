@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { withRouter } from "react-router";
 import { connect } from 'react-redux';
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -10,15 +10,12 @@ import LinksTable from './LinksTable';
 
 function Dashboard(props) {
 
-  const checkLoginStatus = (props) => {
-    if (!JSON.parse(localStorage.getItem('token'))) {
-      props.history.push('/')
-    }
+  const checkLoginStatus = () => {
+    if (!props.menus.logged_in) props.history.push('/')
   }
 
-  useEffect(() => {
-    checkLoginStatus(props)
-  });
+  checkLoginStatus()
+
 
   const lang = props.menus.lang
   const text = {

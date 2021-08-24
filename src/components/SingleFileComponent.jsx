@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
@@ -67,11 +67,11 @@ function SingleFileComponent(props) {
     }
   }
 
-  const checkLoginStatus = (props) => {
-    if (!JSON.parse(localStorage.getItem('token'))) {
-      props.history.push('/')
-    }
+  const checkLoginStatus = () => {
+    if (!props.menus.logged_in) props.history.push('/')
   }
+
+  checkLoginStatus()
 
 
   const handleResend = (e) => {
@@ -88,9 +88,7 @@ function SingleFileComponent(props) {
     }
   }
 
-  useEffect(() => {
-    checkLoginStatus(props)
-  });
+
 
   const handleExpandClick = () => {
     setExpanded(!expanded);

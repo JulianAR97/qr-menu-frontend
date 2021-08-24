@@ -43,14 +43,13 @@ const MenuComponent = (props) => {
   const [showResendButton, setShowResendButton] = React.useState(true)
 
 
-  const checkLoginStatus = (props) => {
-    if (!JSON.parse(localStorage.getItem('token'))) {
-      props.history.push('/')
-    }
+  const checkLoginStatus = () => {
+    if (!props.menus.logged_in) props.history.push('/')
   }
 
+  checkLoginStatus()
+
   useEffect(() => {
-    checkLoginStatus(props)
     if(document.getElementsByClassName('viewer-spinner')[0]){
       document.getElementsByClassName('viewer-spinner')[0].remove()
     }
