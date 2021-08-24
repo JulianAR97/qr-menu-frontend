@@ -18,6 +18,7 @@ import { changeLanguage } from '../actions/user';
 import Flag from 'react-world-flags';
 
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -64,7 +65,8 @@ const BootstrapInput = withStyles((theme) => ({
 }))(InputBase);
 
 
-function Navbar(props) {
+const Navbar = (props) => {
+
   const classes = useStyles();
 
   const lang = props.menus.lang
@@ -110,17 +112,7 @@ function Navbar(props) {
             component={Link} 
             to={props.menus.logged_in ? '/dashboard' : '/'} 
           />
-          
-          {props.menus.logged_in ?
-            null
-            :
-            <Tab 
-              label={text[lang].login} 
-              icon={<PersonPinIcon />} 
-              component={Link} 
-              to={'/login'} 
-            />
-          }
+            
           
           {
             props.menus.logged_in ?
@@ -130,8 +122,14 @@ function Navbar(props) {
               onClick={handleLogOut} 
             />
             :
-            null
+            <Tab 
+              label={text[lang].login} 
+              icon={<PersonPinIcon />} 
+              component={Link}
+              to={'/login'}
+            />
           } 
+
           <FormControl className={classes.margin}>
             <Select
               labelId="demo-customized-select-label"
