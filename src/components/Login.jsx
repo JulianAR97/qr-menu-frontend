@@ -1,6 +1,7 @@
 import React from 'react';
 import GoogleLogin from 'react-google-login';
 import TextField from '@material-ui/core/TextField';
+import ReactModal from 'react-modal';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
@@ -8,6 +9,7 @@ import { loginUser } from '../actions/user';
 import ErrorMessage from './ErrorMessage';
 import $ from 'jquery';
 import Button from '@material-ui/core/Button';
+import './Login.css'
 
 const Login = (props) => {
   
@@ -54,6 +56,7 @@ const Login = (props) => {
     if(response.data.logged_in) {
       props.dispatch(loginUser(response))
       props.history.push('/dashboard')
+      props.handleClose() // close modal
     }
   }
 
@@ -70,24 +73,52 @@ const Login = (props) => {
   }
 
   return (
-    <>
+    
+    <ReactModal id="login-modal" isOpen={props.isOpen}>
+      <div className="circle" onClick={props.handleClose}>X</div>
+      
       {renderError ? <ErrorMessage errors={{email: [text[lang].error]}}/> : null}
+      
       <form className="form" onSubmit={(e) => handleLoginSubmit(e)}>
-        <TextField label={text[lang].emailLabel} type="email" value={login.email} name="email"  onChange={(e) => handleLoginInput(e)}/>
-        <TextField label={text[lang].passwordLabel} type="password" value={login.password} name="password" onChange={(e) => handleLoginInput(e)}/>
-        <br />
-        <Button variant="contained" style={{backgroundColor: '#e3a765'}} type='submit' onClick={loader}> {text[lang].loginButton} </ Button >
-        <div className="oauth">
-        <GoogleLogin
-          clientId={(process.env.NODE_ENV === 'development') ? `251620460181${process.env.REACT_APP_GOOGLE_DEV_KEY}` : `251620460181${process.env.REACT_APP_GOOGLE_PROD_KEY}` }
-          buttonText={text[lang].googleLogin}
-          onSuccess={responseGoogle}
-          onFailure={responseGoogle}
-          cookiePolicy={'single_host_origin'}
+        <TextField 
+          label={text[lang].emailLabel} 
+          type="email" 
+          value={login.email} 
+          name="email"
+          onChange={(e) => handleLoginInput(e)}
         />
+        
+        <TextField 
+          label={text[lang].passwordLabel} 
+          type="password" 
+          value={login.password} 
+          name="password" 
+          onChange={(e) => handleLoginInput(e)}
+        />
+        <br />
+        
+        <Button 
+          variant="contained" 
+          style={{backgroundColor: '#e3a765'}} 
+          type='submit' 
+          onClick={loader}
+        > 
+          {text[lang].loginButton} 
+        </ Button >
+        
+        <div className="oauth">
+          <GoogleLogin
+            clientId={(process.env.NODE_ENV === 'development') ? `251620460181${process.env.REACT_APP_GOOGLE_DEV_KEY}` : `251620460181${process.env.REACT_APP_GOOGLE_PROD_KEY}` }
+            buttonText={text[lang].googleLogin}
+            onSuccess={responseGoogle}
+            onFailure={responseGoogle}
+            cookiePolicy={'single_host_origin'}
+          />
         </div>
       </form>
-    </>
+      
+    </ReactModal>
+   
   );
 }
 
