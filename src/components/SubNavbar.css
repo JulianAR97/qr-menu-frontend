@@ -1,0 +1,12 @@
+a.tab:hover {
+  opacity: 1
+}
+
+a.tab {
+  background-color: #95A5C3 !important;
+  opacity: 0.8;
+}
+
+a.tab.active {
+  opacity: 1;
+}

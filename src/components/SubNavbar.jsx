@@ -5,13 +5,14 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { withRouter } from "react-router";
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import './SubNavbar.css'
 
 
 const useStyles = makeStyles({
   root: {
     flexGrow: 1,
-    backgroundColor: '#09c5f9d5',
+    backgroundColor: 'rgba(0, 0, 0, 0)',
   },
   tabs: {
     fontWeight: 'bold',
@@ -45,19 +46,20 @@ const SubNavbar = (props) => {
       </div>
     )
   }
+
   const renderTabs = () => {
     return props.tabLinks.map((tl, i) => (
-        <Tab
-          key={i}
-          className={classes.tabs}
-          label={renderLabel(i)} 
-          component={Link}
-          to={tl}
-        />        
-      )
-    )
+      <Tab
+        key={i}
+        className={`${classes.tabs} tab ${props.location.pathname === tl ? 'active' : ''}`}
+        label={renderLabel(i)} 
+        component={Link}
+        to={tl}
+      />        
+    ))
   }
   
+  console.log(props)
   return (
     <>
       <Paper className={classes.root}>
