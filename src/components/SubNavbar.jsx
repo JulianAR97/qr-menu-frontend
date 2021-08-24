@@ -64,6 +64,7 @@ const SubNavbar = (props) => {
     <>
       <Paper className={classes.root}>
         <Tabs
+          className={'custom-nav'}
           indicatorColor="primary"
           textColor="primary"
           variant="fullWidth"
