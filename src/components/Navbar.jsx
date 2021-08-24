@@ -70,18 +70,7 @@ const Navbar = (props) => {
   const classes = useStyles();
 
   const lang = props.menus.lang
-  const text = {
-    en: {
-      home: "Home",
-      login: "Login",
-      logout: "Logout"
-    },
-    ru: {
-      home: "Домой",
-      login: "Авторизоваться",
-      logout: "Выйти"
-    }
-  }
+
 
   const handleLogOut = () => {
     if(window.confirm((lang === 'en') ? 'Are you sure you want to log out?' : 'Уверены что хотите выйти?')){
@@ -98,7 +87,7 @@ const Navbar = (props) => {
 
 
   return (
-    <div className={classes.root}>
+    <div className={`${classes.root} custom-ab`}>
       <AppBar position="static" style={{backgroundColor: '#91677D'}}>
         <Tabs 
           variant="scrollable"
@@ -107,24 +96,24 @@ const Navbar = (props) => {
           textColor="primary"
           value={false}
         >
-          <Tab 
-            label={text[lang].home}  
+          <Tab
+            className={'icon'}
             icon={<HomeIcon />} 
             component={Link} 
-            to={props.menus.logged_in ? '/dashboard' : '/'} 
+            to={'/'} 
           />
             
           
           {
             props.menus.logged_in ?
             <Tab 
-              label={text[lang].logout} 
+              className={'icon'}
               icon={<ExitToAppIcon />} 
               onClick={handleLogOut} 
             />
             :
-            <Tab 
-              label={text[lang].login} 
+            <Tab
+              className={'icon'}
               icon={<PersonPinIcon />} 
               component={Link}
               to={'/login'}

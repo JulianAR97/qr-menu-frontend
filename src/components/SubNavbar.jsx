@@ -70,6 +70,7 @@ const SubNavbar = (props) => {
           value={false}
         >
           {renderTabs()}
+          
         </Tabs>
       </Paper>
     </>
