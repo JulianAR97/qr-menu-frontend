@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown'
-import Login from './Login';
-import Signup from './Signup';
 import Contact from './Contact'
 import { connect } from 'react-redux';
 import QRCode from './QRCode'
@@ -31,13 +29,11 @@ const Home = (props) => {
   }
 
   useEffect(() => {
-    console.log('here')
     checkLoginStatus(props)
     window.addEventListener('scroll', handleScroll)
   }, [props], window.removeEventListener('scroll', handleScroll));
 
   useEffect(() => {
-    console.log('here')
     import('../mds/home-2.md')
       .then(res => {
         fetch(res.default)
@@ -48,7 +44,6 @@ const Home = (props) => {
   }, [])
 
   useEffect(() => {
-    console.log('here')
     import('../mds/home-1.md')
       .then(res => {
         fetch(res.default)
@@ -78,8 +73,8 @@ const Home = (props) => {
     } else {
       return 'loading...'
     }
-  
   }
+
   return (
     <div className="home-page">
 
