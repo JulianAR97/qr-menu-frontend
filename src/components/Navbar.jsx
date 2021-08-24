@@ -96,6 +96,7 @@ const Navbar = (props) => {
     localStorage.setItem('lang', JSON.stringify(e.target.value));
   }
 
+
   return (
     <div className={classes.root}>
       <AppBar position="static" style={{backgroundColor: '#91677D'}}>
@@ -104,10 +105,10 @@ const Navbar = (props) => {
           scrollButtons="on"
           indicatorColor="primary"
           textColor="primary"
+          value={false}
         >
           <Tab 
-            label={text[lang].home} 
-            value='/' 
+            label={text[lang].home}  
             icon={<HomeIcon />} 
             component={Link} 
             to={props.menus.logged_in ? '/dashboard' : '/'} 

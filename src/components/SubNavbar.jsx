@@ -59,7 +59,6 @@ const SubNavbar = (props) => {
     ))
   }
   
-  console.log(props)
   return (
     <>
       <Paper className={classes.root}>
@@ -68,7 +67,7 @@ const SubNavbar = (props) => {
           indicatorColor="primary"
           textColor="primary"
           variant="fullWidth"
-          centered
+          value={false}
         >
           {renderTabs()}
         </Tabs>
