@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function SIngleFileComponent(props) {
+function SingleFileComponent(props) {
 
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(true);
@@ -110,7 +110,14 @@ function SIngleFileComponent(props) {
     <>
     {
       !props.menus.lastFile.has_file ?
-      <p className="text menu-description">{text[lang].description}<Link to="/qr-menu" style={{color: 'white', textDecoration: 'underline'}}>{text[lang].link1}</Link>.
+      <p className="text menu-description">
+        {text[lang].description}
+        <Link 
+          to="/qr-menu" 
+          style={{color: 'white', textDecoration: 'underline'}}
+        >
+          {text[lang].link1}
+        </Link>.
       </p>
       :
       null
@@ -128,6 +135,7 @@ function SIngleFileComponent(props) {
           :
           <>
             <Card className='qr-card'>
+              
               <CardHeader
                 avatar={
                   <Avatar aria-label="recipe" className={classes.avatar}>
@@ -137,21 +145,30 @@ function SIngleFileComponent(props) {
                 title={text[lang].recentQr}
                 subheader={handleDate(props.menus.lastFile.uploaded)}
               />
-              <a href={props.menus.lastFile.qr_code} target="_blank"><CardMedia
-                className={classes.media}
-                image={props.menus.lastFile.qr_code}
-                title="QR Code"
-              />
+              
+              <a 
+                href={props.menus.lastFile.qr_code} 
+                rel="noreferrer" target="_blank"
+              >
+                <CardMedia
+                  className={classes.media}
+                  image={props.menus.lastFile.qr_code}
+                  title="QR Code"
+                />
               </a>
+
               <CardContent>
-              <Button variant="contained" color="primary"
-                id='resend-qr'
-                style={{marginTop: '15%', backgroundColor: '#e3a765'}}
-                onClick={(e) => handleResend(e)}
-                disabled={!showResendButton}>
-                {text[lang].resend}
-              </ Button >
+              
+                <Button variant="contained" color="primary"
+                  id='resend-qr'
+                  style={{marginTop: '15%', backgroundColor: '#e3a765'}}
+                  onClick={(e) => handleResend(e)}
+                  disabled={!showResendButton}>
+                  {text[lang].resend}
+                </ Button >
+              
               </CardContent>
+
               <CardActions disableSpacing>
                 <IconButton
                   className={clsx(classes.expand, {
@@ -169,7 +186,7 @@ function SIngleFileComponent(props) {
                 <iframe src={props.menus.lastFile.pdf_file} className="img" style={{height: '79%', width: '88%', marginLeft: '0px', marginTop: '3%'}}/>
               </div>
             </div>
-            <a href={props.menus.lastFile.pdf_file} className="text" target="_blank">{text[lang].openFile}</a>
+            <a href={props.menus.lastFile.pdf_file} className="text" rel="noreferrer" target="_blank">{text[lang].openFile}</a>
           </>
       }
 
@@ -186,4 +203,4 @@ const mapStateToProps = function(state) {
   return state
 }
 
-export default connect(mapStateToProps)(withRouter(SIngleFileComponent));
+export default connect(mapStateToProps)(withRouter(SingleFileComponent));

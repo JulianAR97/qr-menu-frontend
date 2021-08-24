@@ -90,7 +90,7 @@ function Dashboard(props) {
         <div style={{justifyContent: 'center', textAlign: 'center'}}>
           {
             props.menus.menuQRLink ?
-            <a href={props.menus.menuQRLink} target="_blank"><img src={props.menus.menuQRLink} style={{width:'300px', height:'300px'}}/></a>
+            <a href={props.menus.menuQRLink} target="_blank" rel="noreferrer"><img src={props.menus.menuQRLink} alt="QR Link" style={{width:'300px', height:'300px'}}/></a>
             :
             <>
               
@@ -100,7 +100,7 @@ function Dashboard(props) {
           <div style={{paddingTop: '2%'}}>
             {
               props.menus.menuFile ?
-              <p className="text"><a href={`/menu/${props.menus.domainLink.split('/')[props.menus.domainLink.split('/').length - 1]}`} target="_blank" className="text">{text[lang].viewFile}</a></p>
+              <p className="text"><a href={`/menu/${props.menus.domainLink.split('/')[props.menus.domainLink.split('/').length - 1]}`} target="_blank" rel="noreferrer" className="text">{text[lang].viewFile}</a></p>
               :
               <p className="text">{text[lang].noFile}</p>
             }

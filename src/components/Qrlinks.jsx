@@ -130,10 +130,10 @@ const Qrlinks = (props) => {
                   {(props.menus.qrLinks.length > 0 ? props.menus.qrLinks : [{address: text[lang].na, qr_code_link: text[lang].na}]).slice(0).reverse().map((row) => (
                     <TableRow key={row.address}>
                       <TableCell className={classes.center} component="th" scope="row">
-                        {row.address === text[lang].na ? text[lang].na : <a href={row.address} target="_blank">{(row.address.length > 40) ? `${row.address.slice(0, 30)}...` : row.address}</a>}
+                        {row.address === text[lang].na ? text[lang].na : <a href={row.address} target="_blank" rel="noreferrer" >{(row.address.length > 40) ? `${row.address.slice(0, 30)}...` : row.address}</a>}
                       </TableCell>
                       <TableCell className={classes.center} align="right">
-                        {row.qr_code_link === text[lang].na ? text[lang].na : <a href={row.qr_code_link} target="_blank">{text[lang].openLink}</a>}
+                        {row.qr_code_link === text[lang].na ? text[lang].na : <a href={row.qr_code_link} target="_blank" rel="noreferrer" >{text[lang].openLink}</a>}
                       </TableCell>
                       <TableCell className={classes.center} align="right">
                         {row.qr_code_link !== text[lang].na ?

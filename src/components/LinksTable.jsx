@@ -86,9 +86,6 @@ TablePaginationActions.propTypes = {
   rowsPerPage: PropTypes.number.isRequired,
 };
 
-function createData(name, calories, fat) {
-  return { name, calories, fat };
-}
 
 const useStyles2 = makeStyles({
   table: {
@@ -160,10 +157,10 @@ function LinksTable(props) {
           ).slice(0).reverse().map((row) => (
             <TableRow key={row.name}>
               <TableCell component="th" scope="row" className={classes.centered}>
-                <a href={row.address} target="_blank">{(row.address.length > 40) ? `${row.address.slice(0, 30)}...` : row.address}</a>
+                <a href={row.address} target="_blank" rel="noreferrer" >{(row.address.length > 40) ? `${row.address.slice(0, 30)}...` : row.address}</a>
               </TableCell>
               <TableCell style={{ width: 160 }} align="right" className={classes.centered}>
-                <a href={row.qr_code_link} target="_blank"><img src={row.qr_code_link} style={{width:'40px', height:'40px'}}/></a>
+                <a href={row.qr_code_link} target="_blank" rel="noreferrer" ><img src={row.qr_code_link} alt="QR Link" style={{width:'40px', height:'40px'}}/></a>
               </TableCell>
               <TableCell style={{ width: 160 }} align="right" className={classes.centered}>
               <IconButton color="primary" aria-label="upload picture" component="span" onClick={(e) => handleDelete(e, row)}>

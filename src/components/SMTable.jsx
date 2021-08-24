@@ -173,10 +173,10 @@ function SMTable(props) {
           ).slice(0).reverse().map((row) => (
             <TableRow key={row.address} >
               <TableCell component="th" scope="row" className={classes.centered}>
-                <a href={row.link} target="_blank">{(row.file_name === 'null' || row.file_name === '') ? text[lang].viewFile : row.file_name}</a>
+                <a href={row.link} target="_blank" rel="noreferrer" >{(row.file_name === 'null' || row.file_name === '') ? text[lang].viewFile : row.file_name}</a>
               </TableCell>
               <TableCell style={{ width: 160 }} align="right" className={classes.centered}>
-                <a href={row.qr_code_link} target="_blank"><img src={row.qr_code_link} style={{width:'40px', height:'40px'}}/></a>
+                <a href={row.qr_code_link} target="_blank" rel="noreferrer" ><img src={row.qr_code_link} alt="QR Link" style={{width:'40px', height:'40px'}}/></a>
               </TableCell>
               <TableCell style={{ width: 160 }} align="right" className={classes.centered}>
                 {handleDate(row.updated_at)}

@@ -1,19 +1,12 @@
 import React from 'react';
 import $ from 'jquery';
-import { makeStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import { uploadMenu } from '../actions/menus';
 
-const useStyles = makeStyles((theme) => ({
-  button: {
-    margin: theme.spacing(1),
-  },
-}));
+
 
 
 const MenuUpload = (props) => {
-
-  const classes = useStyles();
 
   const handleImageChange = (e) => {
     if (e.target.files[0].size > 5e+6) {

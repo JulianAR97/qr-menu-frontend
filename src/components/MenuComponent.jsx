@@ -41,7 +41,7 @@ const MenuComponent = (props) => {
   }
 
   const [showResendButton, setShowResendButton] = React.useState(true)
-  const [loadedPDF, setLoadedPDF] = React.useState(false)
+
 
   const checkLoginStatus = (props) => {
     if (!JSON.parse(localStorage.getItem('token'))) {
@@ -104,7 +104,7 @@ const MenuComponent = (props) => {
           props.menus.menuQRLink ?
           <>
             <p className='text'>{text[lang].qr}</p>
-            <a href={props.menus.menuQRLink} target="_blank"><img className="qr-mobile" style={{border: '5px solid white'}} src={props.menus.menuQRLink}/></a>
+            <a href={props.menus.menuQRLink} target="_blank" rel="noreferrer"><img className="qr-mobile" style={{border: '5px solid white'}} src={props.menus.menuQRLink} alt="QR Link" /></a>
             <br /><br />
             <form onSubmit={(e) => handleEmailResend(e)}>
             <Button variant="contained" color="primary"
@@ -123,7 +123,7 @@ const MenuComponent = (props) => {
                     <div id="pdf-div"  onDocumentLoad={loadPDF()} className="img" style={{height: '79%', width: '88%', marginLeft: '0px', marginTop: '3%'}}></div>
                   </div>
                 </div>
-                <a href={`/menu/${props.menus.domainLink.split('/')[props.menus.domainLink.split('/').length - 1]}`} target="_blank" style={{fontSize:'22px'}} className="text"><p>{text[lang].visitLink}</p></a>
+                <a href={`/menu/${props.menus.domainLink.split('/')[props.menus.domainLink.split('/').length - 1]}`} target="_blank" rel="noreferrer" style={{fontSize:'22px'}} className="text"><p>{text[lang].visitLink}</p></a>
               </div>
               :
               <p className="text">{text[lang].noFile}</p>

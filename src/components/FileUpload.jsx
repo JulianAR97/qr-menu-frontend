@@ -1,19 +1,9 @@
 import React from 'react';
 import $ from 'jquery';
-import { makeStyles } from '@material-ui/core/styles';
 import { singleFileUpload } from '../actions/menus';
 import { connect } from 'react-redux';
 
-const useStyles = makeStyles((theme) => ({
-  button: {
-    margin: theme.spacing(1),
-  },
-}));
-
-
 const FileUpload = (props) => {
-
-  const classes = useStyles();
 
   const lang = props.menus.lang
   const text = {
@@ -53,8 +43,8 @@ const FileUpload = (props) => {
       })
       .then(data => data.json())
       .then(response => props.dispatch(singleFileUpload(response)))
-      .then(response => $('#loader').hide(0))
-      .then(response => document.querySelectorAll('input')[1].value = '')
+      .then(() => $('#loader').hide(0))
+      .then(() => document.querySelectorAll('input')[1].value = '')
       .catch(err => alert(err.message))
     }
   }
