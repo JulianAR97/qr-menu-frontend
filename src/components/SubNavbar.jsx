@@ -25,17 +25,37 @@ const SubNavbar = (props) => {
   const lang = props.menus.lang
   const text = {
     en: {
-      tab1: 'Dashboard',
-      tab2: 'Single File',
-      tab3: 'Manage QR Menu',
-      tab4: 'QR for a Link'
+      tab0: 'Dashboard',
+      tab1: 'Single File',
+      tab2: 'Manage QR Menu',
+      tab3: 'QR for a Link'
     },
     ru: {
-      tab1: 'Быстрый Доступ',
-      tab2: 'Одиночные Файлы',
-      tab3: 'QR Меню',
-      tab4: 'QR на ссылку',
+      tab0: 'Быстрый Доступ',
+      tab1: 'Одиночные Файлы',
+      tab2: 'QR Меню',
+      tab3: 'QR на ссылку',
     }
+  }
+
+  const renderLabel = (i) => {
+    return (
+      <div className="label">
+        {text[lang][`tab${i}`]}
+      </div>
+    )
+  }
+  const renderTabs = () => {
+    return props.tabLinks.map((tl, i) => (
+        <Tab
+          key={i}
+          className={classes.tabs}
+          label={renderLabel(i)} 
+          component={Link}
+          to={tl}
+        />        
+      )
+    )
   }
   
   return (
@@ -47,17 +67,16 @@ const SubNavbar = (props) => {
           variant="fullWidth"
           centered
         >
-          <Tab className={classes.tabs} label={<div style={{color: 'white', textShadow: '1px 1px black'}}>{text[lang].tab1}</div>} component={Link} to={'/dashboard'}/>
-          <Tab className={classes.tabs} label={<div style={{color: 'white', textShadow: '1px 1px black'}}>{text[lang].tab2}</div>} component={Link} to={'/single-file'}/>
-          <Tab className={classes.tabs} label={<div style={{color: 'white', textShadow: '1px 1px black'}}>{text[lang].tab3}</div>} component={Link} to={'/qr-menu'}/>
-          <Tab className={classes.tabs} label={<div style={{color: 'white', textShadow: '1px 1px black'}}>{text[lang].tab4}</div>} component={Link} to={'/qr-link'}/>
+          {renderTabs()}
         </Tabs>
       </Paper>
     </>
   );
 }
 
-
+SubNavbar.defaultProps = {
+  tabLinks: ['/dashboard', '/single-file', '/qr-menu', '/qr-link']
+}
 
 const mapStateToProps = function(state) {
   return state
