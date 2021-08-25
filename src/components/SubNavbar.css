@@ -11,6 +11,7 @@ a.tab.active {
   opacity: 1;
 }
 
+
 button.tab {
   background-color: var(--color3) !important;
   opacity: 0.8;
@@ -28,7 +29,6 @@ button.tab:hover {
 
   .custom-ab {
     width: 100% !important;
-    text-align: right;
     order: -1;
   }
 }
@@ -40,11 +40,11 @@ button.tab:hover {
 @media only screen and (min-width: 900px) {
   .custom-ab {
     width: auto
-
   }
 }
 
 .custom-ab {
   background-color: var(--color3);
   opacity: 0.8 !important;
+  text-align: right;
 }

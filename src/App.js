@@ -4,7 +4,6 @@ import ErrorPage from './components/ErrorPage';
 import Dashboard from './components/Dashboard';
 import Home from "./components/Home";
 import Contact from "./components/Contact";
-import Navbar from "./components/Navbar";
 import { connect} from 'react-redux';
 import React, { useEffect } from 'react';
 import axios from 'axios';
@@ -21,7 +20,7 @@ import SubNavbar from "./components/SubNavbar";
 
 function App(props) {
 
-  const checkLoginStatus = (props) => {
+  const checkLoginStatus = () => {
     if(JSON.parse(localStorage.getItem('token'))) {
       axios.post(`${process.env.REACT_APP_BASE_URL}/logged_in`, {token: JSON.parse(localStorage.getItem('token'))})
       .then(response => {
@@ -36,14 +35,15 @@ function App(props) {
   }
 
   useEffect(() => {
-    checkLoginStatus(props)
-  });
+    checkLoginStatus()
+  }, [props.menus.logged_in])
 
-  
+
+
   return (
     <Router>
-      <Navbar />
-      {props.menus.logged_in ? <SubNavbar /> : null}
+    
+      <SubNavbar />
       <Switch>
         <Route path={'/'} exact component={Home} />
         <Route path={'/dashboard'} exact component={Dashboard} />

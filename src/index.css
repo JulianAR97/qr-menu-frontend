@@ -661,3 +661,18 @@ footer {
   }
 }
 
+button[type="submit"] {
+  background-color: var(--color4)
+}
+
+button[type="submit"]:hover {
+  background-color: var(--color3)
+}
+
+.form .MuiInput-underline::after {
+  border-bottom: 2px solid var(--color3)
+}
+
+.form .MuiFormLabel-root.Mui-focused {
+  color: var(--color3)
+}

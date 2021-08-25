@@ -18,6 +18,7 @@ const Home = (props) => {
     }
   }
   
+
   checkLoginStatus()
 
   const handleScroll = (e) => {
@@ -55,6 +56,7 @@ const Home = (props) => {
       .catch(err => console.log(err))
   }, [])
   
+
   const renderMid = () => {
     if (part1 && part2) {
       return (

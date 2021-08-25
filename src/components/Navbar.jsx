@@ -87,7 +87,7 @@ const Navbar = (props) => {
 
 
   return (
-    <div className={`${classes.root} custom-ab`}>
+    <div className={`custom-ab`} style={!props.menus.logged_in ? {width: '100%'} : null}>
 
       <Tab
         className={'icon tab'}
