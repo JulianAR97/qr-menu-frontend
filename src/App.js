@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import RenderMenu from "./components/RenderMenu";
 import ErrorPage from './components/ErrorPage';
-import Dashboard from './components/Dashboard';
+import Dashboard from './components/Dashboard/Dashboard';
 import Home from "./components/Home";
 import Contact from "./components/Contact";
 import { connect} from 'react-redux';
