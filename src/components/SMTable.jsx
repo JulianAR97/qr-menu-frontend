@@ -1,22 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableFooter from '@material-ui/core/TableFooter';
-import TablePagination from '@material-ui/core/TablePagination';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-import IconButton from '@material-ui/core/IconButton';
-import FirstPageIcon from '@material-ui/icons/FirstPage';
-import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
-import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
-import LastPageIcon from '@material-ui/icons/LastPage';
+import {
+  Table, TableBody, TableCell, TableContainer, TableFooter, 
+  TablePagination, TableRow, Paper, IconButton, Typography,
+  makeStyles, useTheme
+} from '@material-ui/core';
+
+import { FirstPage, KeyboardArrowLeft, KeyboardArrowRight, LastPage, HighlightOff } from '@material-ui/icons'
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import axios from 'axios';
-import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import { deleteMenu } from '../actions/menus';
 import $ from 'jquery';
 
@@ -56,7 +49,7 @@ function TablePaginationActions(props) {
         disabled={page === 0}
         aria-label="first page"
       >
-        {theme.direction === 'rtl' ? <LastPageIcon /> : <FirstPageIcon />}
+        {theme.direction === 'rtl' ? <LastPage /> : <FirstPage />}
       </IconButton>
       <IconButton onClick={handleBackButtonClick} disabled={page === 0} aria-label="previous page">
         {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
@@ -73,7 +66,7 @@ function TablePaginationActions(props) {
         disabled={page >= Math.ceil(count / rowsPerPage) - 1}
         aria-label="last page"
       >
-        {theme.direction === 'rtl' ? <FirstPageIcon /> : <LastPageIcon />}
+        {theme.direction === 'rtl' ? <FirstPage /> : <LastPage />}
       </IconButton>
     </div>
   );
@@ -95,6 +88,13 @@ const useStyles2 = makeStyles({
     textAlign: 'center', 
     justifyContent: 'center'
   },
+  links: {
+    textDecoration: 'none',
+    color: 'rgba(145, 103, 125, 0.8)',
+    '&:hover': {
+      color: 'rgba(145, 103, 125, 1)'
+    }
+  }
 });
 
 function SMTable(props) {
@@ -137,7 +137,7 @@ function SMTable(props) {
       let fullDate = getDate[0].split('-')
       return (lang === 'en') ? `${fullDate[1]}/${fullDate[2]}/${fullDate[0]}` : `${fullDate[2]}/${fullDate[1]}/${fullDate[0]}`;
     } else {
-      return 'unknown'
+      return ''
     }
   }
 
@@ -151,43 +151,53 @@ function SMTable(props) {
     }
   }
 
+  const renderRows = () => {
+    rowsPerPage > 0 ? 
+      props.data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+    : 
+    props.data.slice(0).reverse().map((row) => (
+      <TableRow key={row.address} >
+        <TableCell component="th" scope="row" className={classes.centered}>
+          <a href={row.link} target="_blank" rel="noreferrer" >{(row.file_name === 'null' || row.file_name === '') ? text[lang].viewFile : row.file_name}</a>
+        </TableCell>
+        <TableCell style={{ width: 160 }} align="right" className={classes.centered}>
+          <a href={row.qr_code_link} target="_blank" rel="noreferrer" ><img src={row.qr_code_link} alt="QR Link" style={{width:'40px', height:'40px'}}/></a>
+        </TableCell>
+        <TableCell style={{ width: 160 }} align="right" className={classes.centered}>
+          {handleDate(row.updated_at)}
+        </TableCell>
+        <TableCell style={{ width: 160 }} align="right" className={classes.centered}>
+        <IconButton color="primary" aria-label="upload picture" component="span" onClick={(e) => handleDelete(e, row)}>
+          <HighlightOff />
+        </IconButton>
+        </TableCell>
+      </TableRow>
+    ))
+  }
+
   return (
     <TableContainer component={Paper} >
       <Table className={classes.table} aria-label="custom pagination table" >
+        <Link to="/single-file" className={classes.links}>
+          <Typography variant="h6">
+            Files
+          </Typography>
+        </Link>
         <TableBody >
-              <TableCell component="th" scope="row" className={classes.centered}>
-                {text[lang].link}
-              </TableCell>
-              <TableCell style={{ width: 160 }} align="right" className={classes.centered}>
-                {text[lang].qr}
-              </TableCell>
-              <TableCell style={{ width: 160 }} align="right" className={classes.centered}>
-                {text[lang].uploaded}
-              </TableCell>
-              <TableCell style={{ width: 160 }} align="right" className={classes.centered}>
-                {text[lang].delete}
-              </TableCell>
-          {(rowsPerPage > 0
-            ? props.data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-            : props.data
-          ).slice(0).reverse().map((row) => (
-            <TableRow key={row.address} >
-              <TableCell component="th" scope="row" className={classes.centered}>
-                <a href={row.link} target="_blank" rel="noreferrer" >{(row.file_name === 'null' || row.file_name === '') ? text[lang].viewFile : row.file_name}</a>
-              </TableCell>
-              <TableCell style={{ width: 160 }} align="right" className={classes.centered}>
-                <a href={row.qr_code_link} target="_blank" rel="noreferrer" ><img src={row.qr_code_link} alt="QR Link" style={{width:'40px', height:'40px'}}/></a>
-              </TableCell>
-              <TableCell style={{ width: 160 }} align="right" className={classes.centered}>
-                {handleDate(row.updated_at)}
-              </TableCell>
-              <TableCell style={{ width: 160 }} align="right" className={classes.centered}>
-              <IconButton color="primary" aria-label="upload picture" component="span" onClick={(e) => handleDelete(e, row)}>
-                <HighlightOffIcon />
-              </IconButton>
-              </TableCell>
-            </TableRow>
-          ))}
+          <TableCell component="th" scope="row" className={classes.centered}>
+            {text[lang].link}
+          </TableCell>
+          <TableCell style={{ width: 160 }} align="right" className={classes.centered}>
+            {text[lang].qr}
+          </TableCell>
+          <TableCell style={{ width: 160 }} align="right" className={classes.centered}>
+            {text[lang].uploaded}
+          </TableCell>
+          <TableCell style={{ width: 160 }} align="right" className={classes.centered}>
+            {text[lang].delete}
+          </TableCell>
+          {renderRows()}
+         
 
           {emptyRows > 0 && (
             <TableRow style={{ height: 53 * emptyRows }}>

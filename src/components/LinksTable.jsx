@@ -16,6 +16,8 @@ import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import {Link} from 'react-router-dom'
+import {Typography} from '@material-ui/core'
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import { deleteQRLink } from '../actions/menus';
 import $ from 'jquery';
@@ -95,6 +97,13 @@ const useStyles2 = makeStyles({
     textAlign: 'center', 
     justifyContent: 'center'
   },
+  links: {
+    textDecoration: 'none',
+    color: 'rgba(145, 103, 125, 0.8)',
+    '&:hover': {
+      color: 'rgba(145, 103, 125, 1)'
+    },
+  }
 });
 
 function LinksTable(props) {
@@ -141,16 +150,21 @@ function LinksTable(props) {
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="custom pagination table">
+        <Link to="/qr-link" className={classes.links}>
+          <Typography variant="h6">
+            Links
+          </Typography>
+        </Link>
         <TableBody>
-              <TableCell component="th" scope="row" className={classes.centered}>
-                {text[lang].link}
-              </TableCell>
-              <TableCell style={{ width: 160 }} align="right" className={classes.centered}>
-                {text[lang].qr}
-              </TableCell>
-              <TableCell style={{ width: 160 }} align="right" className={classes.centered}>
-                {text[lang].delete}
-              </TableCell>
+          <TableCell component="th" scope="row" className={classes.centered}>
+            {text[lang].link}
+          </TableCell>
+          <TableCell style={{ width: 160 }} align="right" className={classes.centered}>
+            {text[lang].qr}
+          </TableCell>
+          <TableCell style={{ width: 160 }} align="right" className={classes.centered}>
+            {text[lang].delete}
+          </TableCell>
           {(rowsPerPage > 0
             ? props.menus.qrLinks.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
             : props.menus.qrLinks
