@@ -2,6 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 import { connect } from 'react-redux';
 import { uploadMenu } from '../actions/menus';
+import { Input } from '@material-ui/core'
 
 
 
@@ -39,14 +40,14 @@ const MenuUpload = (props) => {
   return (
     <>
       <form >
-        <input
-        type="file" 
-        className="btn btn-outline-warning" 
-        style={{fontSize: '18px', color: 'white'}}
-        accept=".pdf, application/pdf" 
-        required
-        onChange={(e) => handleImageChange(e)}/>
-        <br /> <br />
+        <Input
+          type="file" 
+          className="btn btn-outline-warning" 
+          style={{fontSize: '18px', color: 'white'}}
+          accept=".pdf, application/pdf" 
+          required
+          onChange={(e) => handleImageChange(e)}
+        />
       </form>
     </>
   );

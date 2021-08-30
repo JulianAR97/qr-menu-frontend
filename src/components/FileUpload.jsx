@@ -19,13 +19,16 @@ const FileUpload = (props) => {
 
 
   const handleImageChange = (e) => {
+    
     if (e.target.files[0].size > 5e+6) {
       alert(text[lang].fileTooBig);
       document.querySelectorAll('input')[1].value = '';
       return null;
     }
+
     let fileName
     fileName = window.prompt(text[lang].fileName);
+    
     if (fileName === null){
       console.log(document.querySelector('input').value)
       document.querySelectorAll('input')[1].value = '';
@@ -54,13 +57,13 @@ const FileUpload = (props) => {
     <>
       <form >
         <input
-        type="file" 
-        className="btn btn-outline-warning" 
-        style={{fontSize: '18px', color: 'white'}}
-        accept=".doc, .pdf, image/png, image/jpeg, application/pdf" 
-        required
-        onChange={(e) => handleImageChange(e)}/>
-        <br /> <br />
+          type="file" 
+          className="btn btn-outline-warning" 
+          style={{fontSize: '18px', color: '#000'}}
+          accept=".doc, .pdf, image/png, image/jpeg, application/pdf" 
+          required
+          onChange={(e) => handleImageChange(e)}
+          />
       </form>
     </>
   );

@@ -5,8 +5,8 @@ import ReactModal from 'react-modal';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
-import { loginUser } from '../actions/user';
-import ErrorMessage from './ErrorMessage';
+import { loginUser } from '../../actions/user';
+import ErrorMessage from '../Errors/ErrorMessage';
 import $ from 'jquery';
 import Button from '@material-ui/core/Button';
 import './Login.css'

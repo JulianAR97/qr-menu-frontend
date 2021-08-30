@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown'
 import Contact from './Contact'
 import { connect } from 'react-redux';
-import QRCode from './QRCode'
-import Logo from './Logo.jsx'
+import QRCode from '../QRCode'
+import Logo from '../Logo.jsx'
 
 
 
@@ -37,7 +37,7 @@ const Home = (props) => {
   }, [props], window.removeEventListener('scroll', handleScroll));
 
   useEffect(() => {
-    import('../mds/home-2.md')
+    import('../../mds/home-2.md')
       .then(res => {
         fetch(res.default)
           .then(res => res.text())
@@ -47,7 +47,7 @@ const Home = (props) => {
   }, [])
 
   useEffect(() => {
-    import('../mds/home-1.md')
+    import('../../mds/home-1.md')
       .then(res => {
         fetch(res.default)
           .then(res => res.text())

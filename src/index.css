@@ -20,12 +20,6 @@ and (min-width : 481px) {
     width: 40%;
   }
 
-  .dashboard {
-    margin-top: 5%;
-  }
-
-
-
   .qrcode {
     height: 400px;
     width: 400px;
@@ -252,13 +246,6 @@ and (max-device-width : 815px) {
   .MuiDialogContent-root {
     width: 15rem !important;
   }
-
-
-  .dashboard {
-    margin-top: 15%;
-  }
-
-
 
   .qrcode {
     height: 400px;
@@ -566,11 +553,6 @@ body {
   font-size: 24px;
   padding-left: 5%;
   padding-right: 5%;
-}
-
-.dashboard {
-  text-align: center;
-  justify-content: center;
 }
 
 .form {

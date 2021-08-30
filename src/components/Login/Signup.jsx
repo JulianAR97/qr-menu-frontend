@@ -6,12 +6,12 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Paper from '@material-ui/core/Paper';
 import Draggable from 'react-draggable';
-import { signupUser } from '../actions/user';
+import { signupUser } from '../../actions/user';
 import TextField from '@material-ui/core/TextField';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
-import ErrorMessage from './ErrorMessage';
+import ErrorMessage from '../Errors/ErrorMessage';
 import $ from 'jquery';
 
 function PaperComponent(props) {

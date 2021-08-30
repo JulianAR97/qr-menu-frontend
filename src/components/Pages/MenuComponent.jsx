@@ -4,11 +4,11 @@ import { connect } from 'react-redux';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import axios from 'axios';
 import $ from 'jquery';
-import { generateQR } from '../actions/menus';
-import MenuUpload from './MenuUpload';
+import { generateQR } from '../../actions/menus';
+import MenuUpload from '../MenuUpload';
 import { Link } from "react-router-dom";
 import Button from '@material-ui/core/Button';
-import ViewSDKClient from './ViewSDKClient.js';
+import ViewSDKClient from '../ViewSDKClient.js';
 
 
 
@@ -127,7 +127,10 @@ const MenuComponent = (props) => {
               :
               <p className="text">{text[lang].noFile}</p>
             }
-            <MenuUpload />
+            <div style={{justifyContent: 'center', textAlign: 'center', paddingTop: '3%', paddingBottom: '3%'}}>
+              <MenuUpload />
+            </div>
+            
           </>
           :
           <div style={{paddingBottom: '20%'}}>

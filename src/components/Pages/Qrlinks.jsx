@@ -1,22 +1,18 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { 
+  Button, TextField, Table, TableBody, TableCell, TableContainer, 
+  TableHead, TableRow, Paper, CircularProgress, IconButton, makeStyles 
+} from '@material-ui/core';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import { generateQRLink } from '../actions/menus';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
+
+import { generateQRLink } from '../../actions/menus';
+
 import $ from 'jquery';
-import CircularProgress from '@material-ui/core/CircularProgress';
+
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
-import IconButton from '@material-ui/core/IconButton';
-import { deleteQRLink } from '../actions/menus';
+
+import { deleteQRLink } from '../../actions/menus';
 import ReactDOM from 'react-dom';
 
 

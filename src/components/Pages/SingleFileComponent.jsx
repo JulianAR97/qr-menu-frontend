@@ -1,22 +1,19 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
+import {
+  Card, CardHeader, CardMedia, CardContent, CardActions, 
+  CircularProgress, Avatar, IconButton, Button, makeStyles
+} from '@material-ui/core';
+
 import { red } from '@material-ui/core/colors';
 import { withRouter } from "react-router";
 import { connect } from 'react-redux';
 import axios from 'axios';
-import FileUpload from './FileUpload';
+import FileUpload from '../FileUpload';
 import CropFreeIcon from '@material-ui/icons/CropFree';
 import { Link } from "react-router-dom";
-import CircularProgress from '@material-ui/core/CircularProgress';
-import Button from '@material-ui/core/Button';
+import { convertDate } from 'Helpers';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -67,9 +64,7 @@ function SingleFileComponent(props) {
     }
   }
 
-  const checkLoginStatus = () => {
-    if (!props.menus.logged_in) props.history.push('/')
-  }
+  const checkLoginStatus = () => { if (!props.menus.logged_in) props.history.push('/') }
 
   checkLoginStatus()
 
@@ -88,21 +83,7 @@ function SingleFileComponent(props) {
     }
   }
 
-
-
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
-
-  const handleDate = (dateFromDB) => {
-    if (dateFromDB){
-      let getDate = dateFromDB.split('T');
-      let fullDate = getDate[0].split('-')
-      return (lang === 'en') ? `${fullDate[1]}/${fullDate[2]}/${fullDate[0]}` : `${fullDate[2]}/${fullDate[1]}/${fullDate[0]}`;
-    } else {
-      return 'unknown'
-    }
-  }
+  const handleExpandClick = () => { setExpanded(!expanded); };
 
   return (
     <>
@@ -141,7 +122,7 @@ function SingleFileComponent(props) {
                   </Avatar>
                 }
                 title={text[lang].recentQr}
-                subheader={handleDate(props.menus.lastFile.uploaded)}
+                subheader={convertDate(props.menus.lastFile.uploaded, lang)}
               />
               
               <a 
@@ -190,7 +171,6 @@ function SingleFileComponent(props) {
 
     </div>
     <div style={{justifyContent: 'center', textAlign: 'center', paddingTop: '3%', paddingBottom: '3%'}}>
-      <p className="text">Upload New File</p>
       <FileUpload />
     </div>
     </>
