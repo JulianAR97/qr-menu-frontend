@@ -11,7 +11,7 @@ import TextField from '@material-ui/core/TextField';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
-import ErrorMessage from '../Errors/ErrorMessage';
+import ErrorMessage from '../ErrorMessage';
 import $ from 'jquery';
 
 function PaperComponent(props) {
