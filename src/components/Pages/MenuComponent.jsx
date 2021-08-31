@@ -9,36 +9,37 @@ import MenuUpload from '../MenuUpload';
 import { Link } from "react-router-dom";
 import Button from '@material-ui/core/Button';
 import ViewSDKClient from '../ViewSDKClient.js';
+import PhoneDemo from 'components/PhoneDemo'
 
 
-
+const text = {
+  en: {
+    description: "Manage QR Menu is a feature that will allow you to generate only one QR code and being able to change the file attached to it. This a great option to manage a restaurant menu and being able to seamlessly make changes during hours of service. If this is not working for you, please refer to a ",
+    link1: 'SINGLE FILE UPLOAD',
+    qr: 'Your QR Code',
+    resend: 'Re-send this QR Code to my email',
+    visitLink: 'Visit link',
+    noFile: ' No file uploaded yet',
+    noQr: "Seems like you don't have QR generated for you yet, go ahead a create one by clicking the button below:",
+    generateQr: 'Generate QR',
+  },
+  ru: {
+    description: "В QR Меню панели можно сгенерировать один код и менять файлы которые к нему привязаны. Все изменения вступают в силу моментально, что являеться идеальным инструментом для обновления меню бара или ресторана. Если эта опция вам не подходит, попробуйте ",
+    link1: 'ОДИНОЧНЫЕ ФАЙЛЫ',
+    qr: 'QR Код',
+    resend: 'Отправить QR на мой имейл адрес',
+    visitLink: 'Перейти на страницу с меню',
+    noFile: 'Файл не добавлен, пожалуйста загрузите файл',
+    noQr: "QR код не обнаружен, что бы продолжить нажмите 'Сгенерировать QR Код'",
+    generateQr: 'Сгенерировать QR Код',
+  }
+}
 
 
 const MenuComponent = (props) => {
 
   const lang = props.menus.lang
-  const text = {
-    en: {
-      description: "Manage QR Menu is a feature that will allow you to generate only one QR code and being able to change the file attached to it. This a great option to manage a restaurant menu and being able to seamlessly make changes during hours of service. If this is not working for you, please refer to a ",
-      link1: 'SINGLE FILE UPLOAD',
-      qr: 'Your QR Code',
-      resend: 'Re-send this QR Code to my email',
-      visitLink: 'Visit link',
-      noFile: ' No file uploaded yet',
-      noQr: "Seems like you don't have QR generated for you yet, go ahead a create one by clicking the button below:",
-      generateQr: 'Generate QR',
-    },
-    ru: {
-      description: "В QR Меню панели можно сгенерировать один код и менять файлы которые к нему привязаны. Все изменения вступают в силу моментально, что являеться идеальным инструментом для обновления меню бара или ресторана. Если эта опция вам не подходит, попробуйте ",
-      link1: 'ОДИНОЧНЫЕ ФАЙЛЫ',
-      qr: 'QR Код',
-      resend: 'Отправить QR на мой имейл адрес',
-      visitLink: 'Перейти на страницу с меню',
-      noFile: 'Файл не добавлен, пожалуйста загрузите файл',
-      noQr: "QR код не обнаружен, что бы продолжить нажмите 'Сгенерировать QR Код'",
-      generateQr: 'Сгенерировать QR Код',
-    }
-  }
+  
 
   const [showResendButton, setShowResendButton] = React.useState(true)
 
@@ -87,64 +88,62 @@ const MenuComponent = (props) => {
 
   return (
     <>
-    {
-      props.menus.isDataLoaded ?
-        <>
-       {
-         !props.menus.menuFile ?
+      {
+        !props.menus.isDataLoaded ?
+          <CircularProgress  style={{color: '#ffc107'}} />
+        
+        :
+
+        !props.menus.menuFile ?
           <p className="text menu-description"> 
-          {text[lang].description}<Link to="/single-file" style={{color: 'white', textDecoration: 'underline'}}>{text[lang].link1}</Link>.
+            {text[lang].description}<Link to="/single-file" style={{color: 'white', textDecoration: 'underline'}}>{text[lang].link1}</Link>.
           </p>
-          :
-          null
-       }
-        <div style={{textAlign: 'center', justifyContent: 'center', paddingTop: '5%'}}>
-        {
-          props.menus.menuQRLink ?
-          <>
-            <p className='text'>{text[lang].qr}</p>
-            <a href={props.menus.menuQRLink} target="_blank" rel="noreferrer"><img className="qr-mobile" style={{border: '5px solid white'}} src={props.menus.menuQRLink} alt="QR Link" /></a>
-            <br /><br />
-            <form onSubmit={(e) => handleEmailResend(e)}>
-            <Button variant="contained" color="primary"
-              type="submit"
-              style={{backgroundColor: '#e3a765'}}
-              disabled={!showResendButton}>
-              {text[lang].resend}
-            </ Button >
-            </form>
+        :
+        
+          <div style={{textAlign: 'center', justifyContent: 'center', paddingTop: '5%'}}>
+          {
+            props.menus.menuQRLink ?
+            <>
+              <p className='text'>{text[lang].qr}</p>
+              <a href={props.menus.menuQRLink} target="_blank" rel="noreferrer"><img className="qr-mobile" style={{border: '5px solid white'}} src={props.menus.menuQRLink} alt="QR Link" /></a>
               <br /><br />
-            {
-              props.menus.menuFile ?
-              <div style={{ textAlign: 'center', justifyContent: 'center', width:"100%", display: 'inline-block'}}>
-                <div style={{ justifyContent: 'center', textAlign: 'center', display: 'flex', paddingBottom:'2%'}}>
-                  <div className="iphone-demo" style={{backgroundImage: `url('/phone_template.png')`, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height: '46rem', width: '23rem', justifyContent: 'center', alignItems: 'center', display: 'flex'}}>
+              <form onSubmit={(e) => handleEmailResend(e)}>
+              <Button variant="contained" color="primary"
+                type="submit"
+                style={{backgroundColor: '#e3a765'}}
+                disabled={!showResendButton}>
+                {text[lang].resend}
+              </ Button >
+              </form>
+                <br /><br />
+              {
+                props.menus.menuFile ?
+                  <PhoneDemo>
                     <div id="pdf-div"  onDocumentLoad={loadPDF()} className="img" style={{height: '79%', width: '88%', marginLeft: '0px', marginTop: '3%'}}></div>
-                  </div>
-                </div>
-                <a href={`/menu/${props.menus.domainLink.split('/')[props.menus.domainLink.split('/').length - 1]}`} target="_blank" rel="noreferrer" style={{fontSize:'22px'}} className="text"><p>{text[lang].visitLink}</p></a>
-              </div>
-              :
-              <p className="text">{text[lang].noFile}</p>
-            }
-            <div style={{justifyContent: 'center', textAlign: 'center', paddingTop: '3%', paddingBottom: '3%'}}>
-              <MenuUpload />
+                  </PhoneDemo>
+
+                :
+                <p className="text">{text[lang].noFile}</p>
+              }
+              
+              
+            </>
+            :
+            <div style={{paddingBottom: '20%'}}>
+              <p className="text" style={{color: '#ffc107'}}>{text[lang].noQr}</p>
+              <button className="btn btn-success" onClick={handleGenerateQR}>{text[lang].generateQr}</button>
             </div>
-            
-          </>
-          :
-          <div style={{paddingBottom: '20%'}}>
-            <p className="text" style={{color: '#ffc107'}}>{text[lang].noQr}</p>
-            <button className="btn btn-success" onClick={handleGenerateQR}>{text[lang].generateQr}</button>
+          }
+          <div style={{justifyContent: 'center', textAlign: 'center', paddingTop: '3%', paddingBottom: '3%'}}>
+            <MenuUpload />
           </div>
-        }
-        </div>
-        </>
-      :
-      <div className='cp'>
-        <CircularProgress  style={{color: '#ffc107'}} />
-      </div>
-    }
+          </div>
+        
+        
+
+          
+      
+      }
     </>
   );
 }

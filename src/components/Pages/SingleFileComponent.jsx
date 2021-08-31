@@ -13,6 +13,7 @@ import FileUpload from '../FileUpload';
 import CropFreeIcon from '@material-ui/icons/CropFree';
 import { Link } from "react-router-dom";
 import { convertDate } from 'Helpers';
+import PhoneDemo from 'components/PhoneDemo'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -38,6 +39,25 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const text = {
+  en: {
+    description: "A single file upload will generate a QR code specifically for the file you wish to upload. When using this feature you won't be able to change the document that is attached to the already generated code. If you need to have only one QR code and be able to swap files attached to it please use ",
+    link1: 'MANAGE QR MENU',
+    noFile: 'No files uploaded yet',
+    recentQr: 'Your most recent QR generated on:',
+    resend: 'Re-send this QR Code to my email',
+    openFile: 'Open file in new window',
+  },
+  ru: {
+    description: 'Для каждого загруженного файла будет сгенерирован новый уникальный QR код, замена файлов ассоциированных с кодом невозможна. Если вам нужен только 1 код с возможностью менять файлы ассоциированные с ним, пожалуйста используйте ',
+    link1: 'QR МЕНЮ ПАНЕЛЬ',
+    noFile: 'Файл не загружен',
+    recentQr: 'Дата загрузки файла',
+    resend: 'Отправить QR на мой имейл адрес',
+    openFile: 'Открыть Файл',
+  }
+}
+
 function SingleFileComponent(props) {
 
   const classes = useStyles();
@@ -45,28 +65,11 @@ function SingleFileComponent(props) {
   const [showResendButton, setShowResendButton] = React.useState(true);
 
   const lang = props.menus.lang
-  const text = {
-    en: {
-      description: "A single file upload will generate a QR code specifically for the file you wish to upload. When using this feature you won't be able to change the document that is attached to the already generated code. If you need to have only one QR code and be able to swap files attached to it please use ",
-      link1: 'MANAGE QR MENU',
-      noFile: 'No files uploaded yet',
-      recentQr: 'Your most recent QR generated on:',
-      resend: 'Re-send this QR Code to my email',
-      openFile: 'Open file in new window',
-    },
-    ru: {
-      description: 'Для каждого загруженного файла будет сгенерирован новый уникальный QR код, замена файлов ассоциированных с кодом невозможна. Если вам нужен только 1 код с возможностью менять файлы ассоциированные с ним, пожалуйста используйте ',
-      link1: 'QR МЕНЮ ПАНЕЛЬ',
-      noFile: 'Файл не загружен',
-      recentQr: 'Дата загрузки файла',
-      resend: 'Отправить QR на мой имейл адрес',
-      openFile: 'Открыть Файл',
-    }
-  }
+  
 
-  const checkLoginStatus = () => { if (!props.menus.logged_in) props.history.push('/') }
+  // const checkLoginStatus = () => { if (!props.menus.logged_in) props.history.push('/') }
 
-  checkLoginStatus()
+  // checkLoginStatus()
 
 
   const handleResend = (e) => {
@@ -105,9 +108,9 @@ function SingleFileComponent(props) {
 
       {
         !props.menus.isDataLoaded ?
-        <div className='cp'>
-        <CircularProgress  style={{color: '#ffc107'}} />
-        </div>
+     
+          <CircularProgress style={{color: '#ffc107'}} />
+        
         :
           !props.menus.lastFile.has_file ?
             <p className="text" style={{paddingBottom: '12%'}}>{text[lang].noFile}</p>
@@ -160,12 +163,17 @@ function SingleFileComponent(props) {
                 </IconButton>
               </CardActions>
             </Card> 
-              <div style={{ justifyContent: 'center', textAlign: 'center', display: 'flex', paddingBottom:'2%'}}>
-              <div className="iphone-demo" style={{backgroundImage: `url('/phone_template.png')`, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height: '46rem', width: '23rem', justifyContent: 'center', alignItems: 'center', display: 'flex'}}>
-                <iframe title="menu" src={props.menus.lastFile.pdf_file} className="img" style={{height: '79%', width: '88%', marginLeft: '0px', marginTop: '3%'}}/>
-              </div>
-            </div>
-            <a href={props.menus.lastFile.pdf_file} className="text" rel="noreferrer" target="_blank">{text[lang].openFile}</a>
+              
+            <PhoneDemo>
+              <iframe 
+                title="menu" 
+                src={props.menus.lastFile.pdf_file} 
+                className="img" 
+                style={{height: '79%', width: '88%', marginLeft: '0px', marginTop: '3%'}}
+              />
+            </PhoneDemo>
+
+            
           </>
       }
 
