@@ -11,11 +11,6 @@ import Content from 'components/Dashboard/Content';
 function Dashboard(props) {
 
   
-  const checkLoginStatus = () => {
-    if (!props.menus.logged_in) props.history.push('/')
-  }
-
-  checkLoginStatus()
 
   return (
     <>
